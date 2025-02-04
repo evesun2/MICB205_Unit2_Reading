@@ -1,0 +1,15 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: overview_data
+- file: features_data
+- file: summarize
+- file: t-test
+- file: wilcoxon
+- file: correlation
+- file: multiple_predictors
+- file: multiple_responses
+- file: final
