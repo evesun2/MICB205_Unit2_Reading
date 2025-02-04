@@ -1,0 +1,532 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. Summarizing data &#8212; MICB 205 Unit 2 Reading</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'summarize';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Non-parametric Single Comparisons" href="wilcoxon.html" />
+    <link rel="prev" title="2. Features of Data" href="features_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to the MICB 205 Unit 2 Textbook
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview_data.html">1. The Importance of Working with Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features_data.html">2. Features of Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Summarizing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wilcoxon.html">5. Non-parametric Single Comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="correlation.html">6. Continuous versus Continuous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiple_predictors.html">7. Multiple Predictors to a Single Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiple_responses.html">8. Multiple Predictors to Multiple Responses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="final.html">9. Final Remarks around Biostatistics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsummarize.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/summarize.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>3. Summarizing data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-way-to-visualize">Choosing the right way to visualize</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="summarizing-data">
+<h1>3. Summarizing data<a class="headerlink" href="#summarizing-data" title="Permalink to this heading">#</a></h1>
+<p>In Unit 1, you learned a key function in R that makes it easy to determine information about your data including the mean/average, median and standard deviation.</p>
+<p>Let’s review some of these:</p>
+<ul class="simple">
+<li><p><strong>average or mean</strong>: This attempts to predict where the majority of values fall (ie. a middle value). It is a sum of all values divided by the size of the dataset (sample size). However, it is sensitivity to the extremes meaning that a very low or very high value in the mix will skew the average downwards or upwards respectively.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(average = sum (values) /samplesize\)</span></p>
+<ul class="simple">
+<li><p><strong>median</strong>: The ‘true’ middle value. Once you arrange all the values, this is the value that directly represents the middle value of the distribution but it doesn’t necessarily mean that most of the value align here. Although unlike the mean which is sensitive to extremes, the median is not. However, unlike the mean, it doesn’t quite predict where the majority of values fall.</p></li>
+<li><p><strong>standard deviation</strong>: This calculates generally how much variation you have in your data. A standard deviation of zero represents no variation which means all data points are exactly the same (which is rarely true). Take a minute right now to think about what factors cause data to vary so much. As per the equation below, the standard deviation takes in account all the differences between values relative to the mean, and the sample size in order to determine how much variability we have. If you add and subtract the standard deviation from the mean, you get a range of extremes within your data. This is different from standard error which is a fixed calculation of error that may contribute to variation in your data.</p></li>
+</ul>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://www.nlm.nih.gov/oet/ed/stats/img/SDFormula.png"><img alt="https://www.nlm.nih.gov/oet/ed/stats/img/SDFormula.png" src="https://www.nlm.nih.gov/oet/ed/stats/img/SDFormula.png" style="height: 100px;" /></a>
+</div>
+<p>The sigma value  (<span class="math notranslate nohighlight">\(\sigma\)</span>) represents the standard deviation. x are the values and <span class="math notranslate nohighlight">\( \mu \)</span> is the mean.</p>
+<div class="section" id="choosing-the-right-way-to-visualize">
+<h2>Choosing the right way to visualize<a class="headerlink" href="#choosing-the-right-way-to-visualize" title="Permalink to this heading">#</a></h2>
+<p>I don’t know about you but I prefer everything in a more visual way. Instead of looking a raw numbers, I prefer to look at colorful graphs. I think it’s easier for my brain to interpret patterns. But, as scientists in training, we have to make sure we pick the right way to visualize. As mentioned before, in this unit, we visualize everything as <strong>boxplots</strong> because the type of data we work with is ideal for boxplot visualization. But regardless, let’s consider some characteristics that will help you determine the best way to visualize.</p>
+<p>What is the <strong>relationship</strong> that you want to visualize. Is it between discrete groups? Is it over the course of time?</p>
+<p>For time-based visualizations, a line graph is most ideal as it represents the linear course of the patterns we are trying to visualize. This could include bacterial growth over time.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-04-1024x737.png"><img alt="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-04-1024x737.png" src="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-04-1024x737.png" style="height: 250px;" /></a>
+</div>
+<p>But maybe you care about the <strong>correlation</strong> instead where the pathway isn’t very smooth but you can infer a linear relationship. Then a scatterplot which shows the varying data points with a best fit line would be ideal. A line moving upwards refers to positive correlation and a line moving downwards is a negative correlation.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-01-1-1024x737.png"><img alt="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-01-1-1024x737.png" src="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-01-1-1024x737.png" style="height: 250px;" /></a>
+</div>
+<p>Bar plots are very commonly used because they are often easy to interpret, but we have consider the requirement for a bar plot before we use. Bar plots should only be used if the numbers represented on the y-axis are continuous. This is why the bar goes upwards from zero. This means that the response being measured can be zero or 100 or more. For non-cumulative numerical values like your student number where we don’t expect it to change over time, a bar plot is not the ideal representation.</p>
+<p>To interpret the bar plot, consider that the tops of each bar represent the mean of each group.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-06-1024x737.png"><img alt="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-06-1024x737.png" src="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-06-1024x737.png" style="height: 250px;" /></a>
+</div>
+<p>In this unit, although a lot of our proposed research questions could be answered using bar plots, we are going to use the superior boxplot! Why does Evelyn think it’s superior? Well, for 1, I have been told by many researchers in the field that it is becoming the predominant way of visualizing continuous data. Two, it looks cleaner than a bar plot where error bars can extend in weird ways when added. Three, you get a better sense of what the ‘shape’ of the data is in terms of distribution of values and it also takes in consideration potential outliers which often skew the mean (tops of the bar plots). So because I do like it better, we are using it!</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-10-1024x737.png"><img alt="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-10-1024x737.png" src="https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-10-1024x737.png" style="height: 250px;" /></a>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="features_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">2. Features of Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="wilcoxon.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5. Non-parametric Single Comparisons</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-way-to-visualize">Choosing the right way to visualize</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Evelyn Sun
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
