@@ -7,7 +7,7 @@ chapters:
 - file: overview_data
 - file: features_data
 - file: summarize
-- file: t-test
+- file: t_test
 - file: wilcoxon
 - file: correlation
 - file: multiple_predictors
