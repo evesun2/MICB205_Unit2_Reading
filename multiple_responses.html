@@ -389,7 +389,8 @@ document.write(`
 <div class="section" id="permanova">
 <h3>PERMANOVA<a class="headerlink" href="#permanova" title="Permalink to this heading">#</a></h3>
 <p>A PERMANOVA is even more complex. It randomly samples the differences between groups and within groups then creates a histogram of the distances (which represent the differences) based on a distance matrix. It then calculates a <strong>pseudo-F</strong> value which represents the ‘average’ difference between the groups. From the histogram, it tries to determine where the pseudo-F was random and therefore there are no true differences or if it really represents a true pattern. Refer to this <a class="reference external" href="https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/permanova/#:~:text=PERMANOVA%20compares%20the%20variation%20between,importance%20of%20the%20grouping%20factor.">resource</a> for the math around this.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adonis2</span><span class="p">(</span><span class="n">cbind</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span><span class="p">)</span><span class="o">~</span> <span class="n">X1</span><span class="o">*</span><span class="n">X2</span><span class="p">,</span> <span class="n">dat</span><span class="o">=</span><span class="n">DATA</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># save response variables into a matrix object</span>
+<span class="n">adonis2</span><span class="p">(</span><span class="n">matrix</span><span class="o">~</span> <span class="n">X1</span><span class="o">*</span><span class="n">X2</span><span class="p">,</span> <span class="n">dat</span><span class="o">=</span><span class="n">DATA</span><span class="p">)</span>
 
 </pre></div>
 </div>
