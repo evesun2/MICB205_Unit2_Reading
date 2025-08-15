@@ -21,6 +21,7 @@ summary(manova_mdl_multivar)
 A PERMANOVA is even more complex. It randomly samples the differences between groups and within groups then creates a histogram of the distances (which represent the differences) based on a distance matrix. It then calculates a **pseudo-F** value which represents the 'average' difference between the groups. From the histogram, it tries to determine where the pseudo-F was random and therefore there are no true differences or if it really represents a true pattern. Refer to this [resource](https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/permanova/#:~:text=PERMANOVA%20compares%20the%20variation%20between,importance%20of%20the%20grouping%20factor.) for the math around this. 
 
 ```
-adonis2(cbind(Y1,Y2)~ X1*X2, dat=DATA)
+# save response variables into a matrix object
+adonis2(matrix~ X1*X2, dat=DATA)
 
 ```

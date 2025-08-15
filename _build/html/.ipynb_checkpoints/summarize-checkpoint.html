@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. Continuous versus Continuous &#8212; MICB 205 Unit 2 Reading</title>
+    <title>3. Summarizing data &#8212; MICB 205 Unit 2 Reading</title>
   
   
   
@@ -57,11 +57,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'correlation';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'summarize';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Multiple Predictors to a Single Response" href="multiple_predictors.html" />
-    <link rel="prev" title="5. Non-parametric Single Comparisons" href="wilcoxon.html" />
+    <link rel="next" title="4. Parametric Single Comparisons" href="t_test.html" />
+    <link rel="prev" title="2. Features of Data" href="features_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,10 +157,10 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="overview_data.html">1. The Importance of Working with Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features_data.html">2. Features of Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="summarize.html">3. Summarizing data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Summarizing data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t_test.html">4. Parametric Single Comparisons</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wilcoxon.html">5. Non-parametric Single Comparisons</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Continuous versus Continuous</a></li>
+<li class="toctree-l1"><a class="reference internal" href="correlation.html">6. Continuous versus Continuous</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multiple_predictors.html">7. Multiple Predictors to a Single Response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multiple_responses.html">8. Multiple Predictors to Multiple Responses</a></li>
 <li class="toctree-l1"><a class="reference internal" href="final.html">9. Final Remarks around Biostatistics</a></li>
@@ -233,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fcorrelation.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsummarize.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -263,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/correlation.md" target="_blank"
+      <li><a href="_sources/summarize.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -345,7 +347,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>6. Continuous versus Continuous</h1>
+    <h1>3. Summarizing data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -355,9 +357,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-and-spearman-correlation-test">Pearson and Spearman Correlation Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-coefficient">Correlation coefficient</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-correlation-test-in-r">Running a correlation test in R</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-way-to-visualize">Choosing the right way to visualize</a></li>
 </ul>
             </nav>
         </div>
@@ -369,35 +369,42 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="continuous-versus-continuous">
-<h1>6. Continuous versus Continuous<a class="headerlink" href="#continuous-versus-continuous" title="Permalink to this heading">#</a></h1>
-<p>Up until now, we have only looked at comparing a <code class="docutils literal notranslate"><span class="pre">categorical</span></code> predictor to <code class="docutils literal notranslate"><span class="pre">continuous</span></code> response but we haven’t considered looking a <strong>continuous predictor</strong>. This is where we can look at the relationship between two numerical columns. Oh! Oops, I think I mentioned somewhere that we would only visualize things as boxplots in this unit. I guess I lied because as mentioned before, the best way to visualize linear relationships is with a good ol’ <strong>scatterplot and best-fit line</strong>.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="summarizing-data">
+<h1>3. Summarizing data<a class="headerlink" href="#summarizing-data" title="Permalink to this heading">#</a></h1>
+<p>In Unit 1, you learned a key function in R that makes it easy to determine information about your data including the mean/average, median and standard deviation.</p>
+<p>Let’s review some of these:</p>
+<ul class="simple">
+<li><p><strong>average or mean</strong>: This attempts to predict where the majority of values fall (ie. a middle value). It is a sum of all values divided by the size of the dataset (sample size). However, it is sensitivity to the extremes meaning that a very low or very high value in the mix will skew the average downwards or upwards respectively.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(average = sum (values) /samplesize\)</span></p>
+<ul class="simple">
+<li><p><strong>median</strong>: The ‘true’ middle value. Once you arrange all the values, this is the value that directly represents the middle value of the distribution but it doesn’t necessarily mean that most of the value align here. Although unlike the mean which is sensitive to extremes, the median is not. However, unlike the mean, it doesn’t quite predict where the majority of values fall.</p></li>
+<li><p><strong>standard deviation</strong>: This calculates generally how much variation you have in your data. A standard deviation of zero represents no variation which means all data points are exactly the same (which is rarely true). Take a minute right now to think about what factors cause data to vary so much. As per the equation below, the standard deviation takes in account all the differences between values relative to the mean, and the sample size in order to determine how much variability we have. If you add and subtract the standard deviation from the mean, you get a range of extremes within your data. This is different from standard error which is a fixed calculation of error that may contribute to variation in your data.</p></li>
+</ul>
 <div class="figure align-default">
-<a class="reference internal image-reference" href="https://dereksonderegger.github.io/570L/A_Sufficient_Introduction_to_R_files/figure-html/unnamed-chunk-190-1.png"><img alt="https://dereksonderegger.github.io/570L/A_Sufficient_Introduction_to_R_files/figure-html/unnamed-chunk-190-1.png" src="https://dereksonderegger.github.io/570L/A_Sufficient_Introduction_to_R_files/figure-html/unnamed-chunk-190-1.png" style="height: 250px;" /></a>
+<a class="reference internal image-reference" href="https://www.nlm.nih.gov/oet/ed/stats/img/SDFormula.png"><img alt="https://www.nlm.nih.gov/oet/ed/stats/img/SDFormula.png" src="https://www.nlm.nih.gov/oet/ed/stats/img/SDFormula.png" style="height: 100px;" /></a>
 </div>
-<p>This will allow use to interpret <strong>correlations</strong>, if a linear relationship even exists. Using a Pearson or Spearman test, you can determine if the correlations that you are seeing are actually significantly ‘real’ or not.</p>
-<div class="section" id="pearson-and-spearman-correlation-test">
-<h2>Pearson and Spearman Correlation Test<a class="headerlink" href="#pearson-and-spearman-correlation-test" title="Permalink to this heading">#</a></h2>
-<p>A Pearson correlation test is a measure of correlation and statistical significance of two continuous groups (predictor and response) where the response data is <strong>parametric</strong>. Spearman, on the other hand, doesn’t assume that the data is parametric and, therefore, can work with <strong>non-parametric</strong> data. Another key assumption that is different between Pearson and Spearman is the skedasticity of the data.</p>
-<p>Pearson’s test will assume that the data points follow a <strong>homoscedastic</strong> pattern which means that they are evenly scattered around the best-fit line. Spearman’s test makes no such assumptions and can work with either homoscedastic or <strong>heteroscedastic</strong> data.</p>
+<p>The sigma value  (<span class="math notranslate nohighlight">\(\sigma\)</span>) represents the standard deviation. x are the values and <span class="math notranslate nohighlight">\( \mu \)</span> is the mean.</p>
+<div class="section" id="choosing-the-right-way-to-visualize">
+<h2>Choosing the right way to visualize<a class="headerlink" href="#choosing-the-right-way-to-visualize" title="Permalink to this heading">#</a></h2>
+<p>I don’t know about you but I prefer everything in a more visual way. Instead of looking a raw numbers, I prefer to look at colorful graphs. I think it’s easier for my brain to interpret patterns. But, as scientists in training, we have to make sure we pick the right way to visualize. As mentioned before, in this unit, we visualize everything as <strong>boxplots</strong> because the type of data we work with is ideal for boxplot visualization. But regardless, let’s consider some characteristics that will help you determine the best way to visualize.</p>
+<p>What is the <strong>relationship</strong> that you want to visualize. Is it between discrete groups? Is it over the course of time?</p>
+<p>For time-based visualizations, a line graph is most ideal as it represents the linear course of the patterns we are trying to visualize. This could include bacterial growth over time.</p>
 <div class="figure align-default">
-<img alt="https://miro.medium.com/v2/resize:fit:720/format:webp/1*M2187QiB0o0I6r0JfM0JBg.jpeg" src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*M2187QiB0o0I6r0JfM0JBg.jpeg" />
+<a class="reference internal image-reference" href="https://www.bio.davidson.edu/movies/genomics/method/growthlinear.gif"><img alt="https://www.bio.davidson.edu/movies/genomics/method/growthlinear.gif" src="https://www.bio.davidson.edu/movies/genomics/method/growthlinear.gif" style="height: 250px;" /></a>
 </div>
-<p>The way that a correlation test works is that it attempts to predict the <code class="docutils literal notranslate"><span class="pre">middle</span></code> of the correlation; and as the predictor values increase, it measure how much the response values deviate from this middle. If they deviate upwards, there is a <strong>positive correlation</strong> and if they deviate downwards, there is a <strong>negative correlation</strong>. How much they deviate is also taken into consideration when generating the p-value which tells you whether the correlation is significant or not.</p>
+<p>But maybe you care about the <strong>correlation</strong> instead where the pathway isn’t very smooth but you can infer a linear relationship. Then a scatterplot which shows the varying data points with a best fit line would be ideal. A line moving upwards refers to positive correlation and a line moving downwards is a negative correlation.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://r-graph-gallery.com/50-51-52-scatter-plot-with-ggplot2_files/figure-html/unnamed-chunk-3-1.png"><img alt="https://r-graph-gallery.com/50-51-52-scatter-plot-with-ggplot2_files/figure-html/unnamed-chunk-3-1.png" src="https://r-graph-gallery.com/50-51-52-scatter-plot-with-ggplot2_files/figure-html/unnamed-chunk-3-1.png" style="height: 250px;" /></a>
 </div>
-<div class="section" id="correlation-coefficient">
-<h2>Correlation coefficient<a class="headerlink" href="#correlation-coefficient" title="Permalink to this heading">#</a></h2>
-<p>The two correlation tests don’t just generate a p-value but also a <strong>correlation coefficient</strong>. The correlation coefficient ranges from -1 to 1 where -1 is a perfect negative correlation, 1 is a perfect positive correlation, and 0 is no correlation.</p>
+<p>Bar plots are very commonly used because they are often easy to interpret, but we have consider the requirement for a bar plot before we use. Bar plots should only be used if the numbers represented on the y-axis are continuous. This is why the bar goes upwards from zero. This means that the response being measured can be zero or 100 or more. For non-cumulative numerical values like your student number where we don’t expect it to change over time, a bar plot is not the ideal representation.</p>
+<p>To interpret the bar plot, consider that the tops of each bar represent the mean of each group.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://r-graph-gallery.com/218-basic-barplots-with-ggplot2_files/figure-html/thecode-1.png"><img alt="https://r-graph-gallery.com/218-basic-barplots-with-ggplot2_files/figure-html/thecode-1.png" src="https://r-graph-gallery.com/218-basic-barplots-with-ggplot2_files/figure-html/thecode-1.png" style="height: 250px;" /></a>
 </div>
-<div class="section" id="running-a-correlation-test-in-r">
-<h2>Running a correlation test in R<a class="headerlink" href="#running-a-correlation-test-in-r" title="Permalink to this heading">#</a></h2>
-<p>Both the Pearson and Spearman tests use the same base function but with an option difference:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spearman is the default</span>
-<span class="n">cor</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="o">~</span><span class="n">Y</span><span class="o">+</span><span class="n">X</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">)</span>
-
-<span class="c1"># Pearson is an optional change</span>
-<span class="n">cor</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="o">~</span><span class="n">Y</span><span class="o">+</span><span class="n">X</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dat</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pearson&quot;</span><span class="p">)</span>
-</pre></div>
+<p>In this unit, although a lot of our proposed research questions could be answered using bar plots, we are going to use the superior boxplot! Why does Evelyn think it’s superior? Well, for 1, I have been told by many researchers in the field that it is becoming the predominant way of visualizing continuous data. Two, it looks cleaner than a bar plot where error bars can extend in weird ways when added. Three, you get a better sense of what the ‘shape’ of the data is in terms of distribution of values and it also takes in consideration potential outliers which often skew the mean (tops of the bar plots). So because I do like it better, we are using it!</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="https://r-graph-gallery.com/89-box-and-scatter-plot-with-ggplot2_files/figure-html/unnamed-chunk-3-1.png"><img alt="https://r-graph-gallery.com/89-box-and-scatter-plot-with-ggplot2_files/figure-html/unnamed-chunk-3-1.png" src="https://r-graph-gallery.com/89-box-and-scatter-plot-with-ggplot2_files/figure-html/unnamed-chunk-3-1.png" style="height: 250px;" /></a>
 </div>
 </div>
 </div>
@@ -434,20 +441,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="wilcoxon.html"
+       href="features_data.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">5. Non-parametric Single Comparisons</p>
+        <p class="prev-next-title">2. Features of Data</p>
       </div>
     </a>
     <a class="right-next"
-       href="multiple_predictors.html"
+       href="t_test.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">7. Multiple Predictors to a Single Response</p>
+        <p class="prev-next-title">4. Parametric Single Comparisons</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -469,9 +476,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-and-spearman-correlation-test">Pearson and Spearman Correlation Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-coefficient">Correlation coefficient</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-a-correlation-test-in-r">Running a correlation test in R</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-way-to-visualize">Choosing the right way to visualize</a></li>
 </ul>
   </nav></div>
 

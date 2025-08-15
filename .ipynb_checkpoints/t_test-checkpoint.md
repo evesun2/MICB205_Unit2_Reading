@@ -16,7 +16,7 @@ Here are the assumptions associated with a t-test:
 
 1. The data for the response is continuous and the predictor only has two categories 
 2. The response data is parametric
-3. There is equal variance between the two groups (although it does take in consideration the standard deviation)
+3. Depending on the type of t-test, some assume that variance is equal (ie. standard deviation is the same for both groups) and other like the t-test we are using in R does not
 
 The t-test is going to consider 3 things when analyzing the differences between the two groups: means, standard deviations and sample size. If you are curious about the math behind the t-test, check out this [resource](https://www.investopedia.com/terms/t/t-test.asp ).
 
