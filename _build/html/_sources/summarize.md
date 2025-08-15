@@ -26,13 +26,13 @@ What is the **relationship** that you want to visualize. Is it between discrete 
 
 For time-based visualizations, a line graph is most ideal as it represents the linear course of the patterns we are trying to visualize. This could include bacterial growth over time.
 
-```{figure} https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-04-1024x737.png
+```{figure} https://www.bio.davidson.edu/movies/genomics/method/growthlinear.gif
 :height: 250px
 ```
 
 But maybe you care about the **correlation** instead where the pathway isn't very smooth but you can infer a linear relationship. Then a scatterplot which shows the varying data points with a best fit line would be ideal. A line moving upwards refers to positive correlation and a line moving downwards is a negative correlation. 
 
-```{figure} https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-01-1-1024x737.png
+```{figure} https://r-graph-gallery.com/50-51-52-scatter-plot-with-ggplot2_files/figure-html/unnamed-chunk-3-1.png
 :height: 250px
 ```
 
@@ -40,12 +40,12 @@ Bar plots are very commonly used because they are often easy to interpret, but w
 
 To interpret the bar plot, consider that the tops of each bar represent the mean of each group. 
 
-```{figure} https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-06-1024x737.png
+```{figure} https://r-graph-gallery.com/218-basic-barplots-with-ggplot2_files/figure-html/thecode-1.png
 :height: 250px
 ```
 
 In this unit, although a lot of our proposed research questions could be answered using bar plots, we are going to use the superior boxplot! Why does Evelyn think it's superior? Well, for 1, I have been told by many researchers in the field that it is becoming the predominant way of visualizing continuous data. Two, it looks cleaner than a bar plot where error bars can extend in weird ways when added. Three, you get a better sense of what the 'shape' of the data is in terms of distribution of values and it also takes in consideration potential outliers which often skew the mean (tops of the bar plots). So because I do like it better, we are using it!
 
-```{figure} https://revopsteam.com/wp-content/uploads/sites/7/2023/05/rev-types-of-data-visualization-infographics-10-1024x737.png
+```{figure} https://r-graph-gallery.com/89-box-and-scatter-plot-with-ggplot2_files/figure-html/unnamed-chunk-3-1.png
 :height: 250px
 ```
